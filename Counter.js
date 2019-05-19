@@ -26,7 +26,7 @@ class Counter extends Component {
 			<Fragment>
 				<p>Current Count: {this.state.count}</p>
 				<button data-testid="increase-button" onClick={this.increaseCount}>Increment Count</button>
-				<button data-testid="decrease-button" onClick={this.decreaseCount}>Increment Count</button>
+				<button data-testid="decrease-button" onClick={this.decreaseCount}>Increment Count 2</button>
 			</Fragment>
 		);
 	}

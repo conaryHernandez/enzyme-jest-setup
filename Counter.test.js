@@ -1,8 +1,15 @@
 import React from 'react';
 import Counter from './Counter';
 import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 
 describe('Counter Component', () => {
+	it('should match snapshot', () => {
+		const tree = renderer.create(<Counter />).toJSON();
+
+		expect(tree).toMatchSnapshot();
+	});
+
 	it('should start in 0', () => {
 		const wrapper = shallow(<Counter />);
 		const textWrapper = wrapper.find('p').text();
