@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Counter from './Counter';
+import CounterList from './CounterList';
 
-ReactDOM.render(<Counter />, document.getElementById('root'));
+ReactDOM.render(<CounterList />, document.getElementById('root'));

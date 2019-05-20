@@ -16,7 +16,7 @@ Array [
     data-testid="decrease-button"
     onClick={[Function]}
   >
-    Increment Count
+    Decrement Count
   </button>,
 ]
 `;
