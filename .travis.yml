@@ -5,6 +5,10 @@ cache: npm
 
 install:
  - npm ci
+ branches:
+  only:
+  - master
+  - gh-pages
 script:
    - npm test
    - npm run build
