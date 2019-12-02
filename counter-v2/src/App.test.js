@@ -5,8 +5,13 @@ import App from './App';
 
 Enzyme.configure({adapter: new adapter()})
 
-it('renders without crashing', () => {
 
+// using data attrbiutes instead of html properties because devs can use those for coding purposes
+it('renders without crashing', () => {
+	const wrapper = shallow(<App />);
+	const appComponent = wrapper.find('[data-test="component-app"]');
+
+	expect(appComponent.length).toBe(1);
 });
 
 test('renders without error', () => {
