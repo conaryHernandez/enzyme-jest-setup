@@ -7,9 +7,9 @@ Enzyme.configure({adapter: new adapter()})
 
 const setup = (props = {}, state = null) => {
 	const wrapper = shallow(<App {...props} />);
-	
+
 	if (state) {
-		wrapper.setState(state);		
+		wrapper.setState(state);
 	}
 	return wrapper;
 }
@@ -64,6 +64,20 @@ test('clicking button increments counter display', () => {
 
 	const counterDisplay = findByTestAttr(wrapper, 'counter-display');
 
-	expect(counterDisplay.text()).toContain(8); 
+	expect(counterDisplay.text()).toContain(8);
+
+});
+
+// state || display (implementation vs behavior)
+test('clicking button decrement counter display', () => {
+	const counter = 7;
+	const wrapper = setup(null, { counter });
+	const button = findByTestAttr(wrapper, 'decrement-button');
+
+	button.simulate('click');
+
+	const counterDisplay = findByTestAttr(wrapper, 'counter-display');
+
+	expect(counterDisplay.text()).toContain(6);
 
 });
