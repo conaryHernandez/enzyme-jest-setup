@@ -1,12 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Input from './components/Input/Input';
-import LanguagePicker from './components/LanguagePicker/LanguagePicker';
-
 import hookActions from './actions/hookActions';
-import LanguageContext from './contexts/languageContext';
+import languageContext from './contexts/languageContext';
+import successContext from './contexts/successContext';
+import guessedWordsContext from './contexts/guessedWordsContext';
 
+import LanguagePicker from './LanguagePicker';
+import Input from './Input';
+import Congrats from './Congrats';
+import GuessedWords from './GuessedWords';
+
+/**
+ * Reducer to update state, called automatically by dispatch
+ * @param state {object} - existing state
+ * @param action {object} - contains 'type' and 'payload' properties for the state update
+ *                   for example: { type: "setSecretWord", payload: "party" }
+ * @return {object} - new state
+ */
 function reducer(state, action) {
   switch (action.type) {
     case 'setSecretWord':
@@ -14,7 +24,7 @@ function reducer(state, action) {
     case 'setLanguage':
       return { ...state, language: action.payload };
     default:
-      throw new Error(`Invalid action type ${action.type}`);
+      throw new Error(`Invalid action type: ${action.type}`);
   }
 }
 
@@ -47,10 +57,16 @@ function App() {
   return (
     <div className="container" data-test="component-app">
       <h1>Jotto</h1>
-      <LanguageContext.Provider value={state.language}>
+      <languageContext.Provider value={state.language}>
         <LanguagePicker setLanguage={setLanguage} />
-        <Input secretWord={state.secretWord} />
-      </LanguageContext.Provider>
+        <guessedWordsContext.GuessedWordsProvider>
+          <successContext.SuccessProvider>
+            <Congrats />
+            <Input secretWord={state.secretWord} />
+          </successContext.SuccessProvider>
+          <GuessedWords />
+        </guessedWordsContext.GuessedWordsProvider>
+      </languageContext.Provider>
     </div>
   );
 }
