@@ -5,10 +5,10 @@ import languageContext from './contexts/languageContext';
 import successContext from './contexts/successContext';
 import guessedWordsContext from './contexts/guessedWordsContext';
 
-import LanguagePicker from './LanguagePicker';
-import Input from './Input';
-import Congrats from './Congrats';
-import GuessedWords from './GuessedWords';
+import LanguagePicker from './components/LanguagePicker/LanguagePicker';
+import Input from './components/Input/Input';
+import Congrats from './components/Congrats/Congrats';
+import GuessedWords from './components/GuessedWords/GuessedWords';
 
 /**
  * Reducer to update state, called automatically by dispatch
