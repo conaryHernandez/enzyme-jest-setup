@@ -1,11 +1,11 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { findByTestAttr } from '../test/testUtils';
+import { findByTestAttr } from './test/testUtils';
 
 import guessedWordsContext from './contexts/guessedWordsContext';
 import successContext from './contexts/successContext';
-import Input from './Input';
-import GuessedWords from './GuessedWords';
+import Input from './components/Input/Input';
+import GuessedWords from './components/GuessedWords/GuessedWords';
 
 function setup(guessedWordsStrings = [], secretWord = 'party') {
   const wrapper = mount(
